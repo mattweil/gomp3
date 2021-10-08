@@ -6,6 +6,7 @@ import (
     "io/ioutil"
    	"log"
    	"net/http"
+   	"regexp"
 )
 
 func main() {
@@ -31,5 +32,10 @@ func main() {
 
    	sb := string(body)
    	log.Printf(sb)
+
+   	r, _ := regexp.Compile("https:\\/\\/r[0-9]---[a-z][a-z]-[a-z0-9]{8}\\.googlevideo\\.com")
+   	
+   	fmt.Println(r.FindAllString(sb, -1))
+
 }
 
